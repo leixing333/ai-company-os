@@ -1,0 +1,49 @@
+{
+  "project_id": "P-20251025-001",
+  "client": "StartupX",
+  "service": "AI 设计服务 - 产品落地页",
+  "trigger_source": "ceo_approval",
+  "status": "DELIVERED",
+  "current_team": "operations",
+  "assigned_to": "csm",
+  "price_usd": 999,
+  "created_at": "2026-04-29T15:15:28.130496",
+  "updated_at": "2026-04-29T15:15:28.132390",
+  "history": [
+    {
+      "status": "LEAD_CAPTURED",
+      "agent": "scout",
+      "ts": "2026-04-29T15:15:28.130502"
+    },
+    {
+      "status": "NEGOTIATING",
+      "agent": "closer",
+      "ts": "2026-04-29T15:15:28.130503"
+    },
+    {
+      "status": "CEO_APPROVED",
+      "agent": "ceo",
+      "ts": "2026-04-29T15:15:28.130505"
+    },
+    {
+      "status": "PRODUCTION_STARTED",
+      "agent": "cos",
+      "ts": "2026-04-29T15:15:28.130506"
+    },
+    {
+      "status": "DESIGN_APPROVED",
+      "agent": "cdo",
+      "ts": "2026-04-29T15:15:28.131212"
+    },
+    {
+      "status": "READY_FOR_DELIVERY",
+      "agent": "ops",
+      "ts": "2026-04-29T15:15:28.131648"
+    },
+    {
+      "status": "DELIVERED",
+      "agent": "csm",
+      "ts": "2026-04-29T15:15:28.132395"
+    }
+  ]
+}

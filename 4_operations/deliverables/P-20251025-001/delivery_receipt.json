@@ -1,0 +1,16 @@
+{
+  "project_id": "P-20251025-001",
+  "client": "StartupX",
+  "delivered_by": "csm",
+  "delivery_time": "2026-04-29T15:15:28.132278",
+  "items": [
+    "design_tokens.json",
+    "copywriting.json",
+    "LandingPage.jsx",
+    "qa_report.json"
+  ],
+  "deploy_url": "https://startupx-landing.vercel.app",
+  "status": "DELIVERED",
+  "invoice_status": "PENDING_PAYMENT",
+  "amount_usd": 999
+}

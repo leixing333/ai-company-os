@@ -1,3 +1,4 @@
 date,type,project_id,description,amount_usd,currency,payment_method,api_model,tokens_used,cost_usd,profit_usd
 2025-01-01,INCOME,TEMPLATE,示例：客户付款,999,USD,stripe,,,,
 2025-01-01,EXPENSE,TEMPLATE,示例：Claude API 调用,,,,claude-3-5-sonnet,50000,0.75,
+2026-04-29,P-20251025-001,StartupX,AI设计服务,999,PENDING_PAYMENT

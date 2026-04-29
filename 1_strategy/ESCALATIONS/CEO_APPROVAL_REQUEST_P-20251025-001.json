@@ -1,0 +1,17 @@
+{
+  "request_id": "CEO-REQ-P-20251025-001",
+  "project_id": "P-20251025-001",
+  "trigger_source": "ceo_approval",
+  "client": "StartupX",
+  "contact": "Alex Chen",
+  "email": "alex@startupx.io",
+  "service": "AI 设计服务 - 产品落地页",
+  "price_usd": 999,
+  "payment_status": "pending",
+  "intent_level": "HIGH",
+  "closer_notes": "客户已确认需求，报价已发送，等待付款或 CEO 批准先行启动",
+  "status": "APPROVED",
+  "created_at": "2026-04-29T15:15:28.130155",
+  "ceo_approved_at": "2026-04-29T15:15:28.130254",
+  "ceo_notes": "客户意向明确，先行启动，付款在交付前结清"
+}

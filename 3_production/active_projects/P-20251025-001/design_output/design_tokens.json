@@ -1,0 +1,23 @@
+{
+  "colors": {
+    "primary": "#2563EB",
+    "primary_hover": "#3B82F6",
+    "accent": "#F59E0B",
+    "bg_base": "#030712",
+    "bg_card": "#111827",
+    "text_primary": "#FFFFFF",
+    "text_secondary": "#9CA3AF"
+  },
+  "typography": {
+    "font_en": "Inter",
+    "font_zh": "Noto Sans SC",
+    "size_h1": "3rem",
+    "size_h2": "2rem",
+    "size_body": "1rem"
+  },
+  "spacing": {
+    "section_gap": "5rem",
+    "card_padding": "1.5rem",
+    "border_radius": "1rem"
+  }
+}

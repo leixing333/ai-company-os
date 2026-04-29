@@ -1,0 +1,33 @@
+{
+  "project_id": "P-20251025-001",
+  "tested_by": "qa",
+  "test_date": "2026-04-29T15:15:28.131507",
+  "tests": [
+    {
+      "name": "桌面端渲染",
+      "status": "PASS"
+    },
+    {
+      "name": "移动端响应式",
+      "status": "PASS"
+    },
+    {
+      "name": "CTA 按钮点击",
+      "status": "PASS"
+    },
+    {
+      "name": "Stripe 支付链接",
+      "status": "PASS"
+    },
+    {
+      "name": "页面加载速度 < 2s",
+      "status": "PASS"
+    },
+    {
+      "name": "无控制台报错",
+      "status": "PASS"
+    }
+  ],
+  "overall": "PASS",
+  "notes": "所有测试通过，可以部署"
+}

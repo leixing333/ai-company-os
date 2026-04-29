@@ -1,0 +1,239 @@
+{
+  "test_run": "2026-04-29T15:15:28.132643",
+  "total": 46,
+  "passed": 46,
+  "failed": 0,
+  "pass_rate": "100.0%",
+  "results": [
+    {
+      "name": "目录存在: /.opc",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "目录存在: /1_strategy",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "目录存在: /2_marketing/agents/scout",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "目录存在: /2_marketing/agents/closer",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "目录存在: /2_marketing/agents/broadcaster",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "目录存在: /3_production/active_projects",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "目录存在: /3_production/infrastructure/lobster-legion",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "目录存在: /3_production/shared_workspace",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "目录存在: /4_operations/agents/csm",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "目录存在: /4_operations/deliverables",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "文件存在: /.opc/config.json",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "文件存在: /3_production/shared_workspace/STATUS_MACHINE.json",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "文件存在: /3_production/shared_workspace/BRIEF_SCHEMA.json",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "文件存在: /3_production/shared_workspace/DESIGN_HANDOFF_SPEC.md",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "文件存在: /3_production/infrastructure/lobster-legion/openclaw.json",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "文件存在: /3_production/infrastructure/lobster-legion/agents/cos/SOUL.md",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "小探写入线索文件",
+      "status": "✅",
+      "detail": "LEAD-20251025-001.json"
+    },
+    {
+      "name": "线索评分字段存在",
+      "status": "✅",
+      "detail": "score=87"
+    },
+    {
+      "name": "线索状态为 NEW",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "小销创建 CEO 申请文件",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "申请包含 trigger_source 字段",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "申请状态为 PENDING_CEO_APPROVAL",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "CEO 审批通过 (status=APPROVED)",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "CoS 创建项目目录",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "CoS 写入 status.json",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "状态为 PRODUCTION_STARTED",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "CoS 写入 brief.md",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "历史记录包含 4 个状态节点",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "小策写入 layout_specs.md",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "小设写入 design_tokens.json",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "小文写入 copywriting.json",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "小设生成 assets 目录",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "设计变量包含颜色/字体/间距",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "CDO 审批通过，状态更新为 DESIGN_APPROVED",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "FE 验证设计交接文件完整性",
+      "status": "✅",
+      "detail": "4 类文件全部存在"
+    },
+    {
+      "name": "FE 生成 LandingPage.jsx",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "QA 生成测试报告",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "QA 所有测试通过",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "QA 测试覆盖 6 个场景",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "Ops 部署完成，状态更新为 READY_FOR_DELIVERY",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "小服创建交付目录",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "小服生成交付确认单",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "交付物包含 4 个文件",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "小服更新财务记录",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "项目最终状态为 DELIVERED",
+      "status": "✅",
+      "detail": ""
+    },
+    {
+      "name": "历史记录完整 (6 个节点)",
+      "status": "✅",
+      "detail": ""
+    }
+  ]
+}
