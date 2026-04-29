@@ -55,12 +55,26 @@
     → 如果有意向: 发送报价单 + Stripe 支付链接
     → 更新状态: NEGOTIATING
 
-[Stripe Webhook 支付成功，实时触发]
-小销 接收 Stripe 事件
+[Stripe Webhook 支付成功 或 CEO 申请成功，实时触发]
+
+**路径 A — 支付成功**
+小销 接收 Stripe Webhook 支付成功事件
     → 创建 3_production/active_projects/P-YYYYMMDD-XXX/
-    → 写入 brief.md (从客户邮件中提炼需求)
-    → 写入 status.json: current_status = "PRODUCTION_STARTED"
-    → 通知 CEO (发送邮件/消息)
+    → 写入 brief.md，写入 status.json: current_status = "PRODUCTION_STARTED"
+    → 记录 trigger_source = "payment"
+    → 通知 CEO
+
+**路径 B — CEO 申请成功**
+小销 判断客户有明确意向但尚未付款
+    → 写入 1_strategy/ESCALATIONS/CEO_APPROVAL_REQUEST_P-XXX.json
+    → 更新线索状态: CEO_APPROVAL_PENDING
+    → 发送通知等待 CEO 确认
+
+CEO 确认后（手动写入或点击确认）
+    → 创建 3_production/active_projects/P-YYYYMMDD-XXX/
+    → 写入 brief.md，写入 status.json: current_status = "PRODUCTION_STARTED"
+    → 记录 trigger_source = "ceo_approval"
+    → 付款可在交付后结清（小销后续跟进）
 
 [生产引擎自动接单，实时触发]
 龙虾军团 CoS 扫描 active_projects/

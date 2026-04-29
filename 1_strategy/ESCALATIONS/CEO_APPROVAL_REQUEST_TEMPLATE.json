@@ -1,0 +1,23 @@
+{
+  "request_id": "CEO-REQ-YYYYMMDD-001",
+  "request_type": "CEO_APPROVAL_TO_START_PRODUCTION",
+  "requested_by": "closer",
+  "requested_at": "2025-10-25T11:00:00Z",
+  "project_info": {
+    "client_name": "AI Startup X",
+    "client_email": "john@startupx.com",
+    "package_tier": "Growth",
+    "budget_usd": 2499,
+    "payment_status": "PENDING",
+    "payment_note": "客户有明确意向，已口头确认，付款将在交付后结清"
+  },
+  "reason": "客户 AI Startup X 已明确表示愿意合作，但希望先看到初稿再付款。建议先启动生产，降低客户决策门槛，提升转化率。",
+  "risk_assessment": "低风险：客户已有产品在线，公司背景可查，Lead Score 9/10",
+  "ceo_decision": {
+    "status": "PENDING",
+    "decided_at": null,
+    "decision": null,
+    "note": ""
+  },
+  "instructions_for_ceo": "请将 ceo_decision.status 改为 APPROVED 或 REJECTED，并填写 decided_at 时间戳。APPROVED 后系统将自动创建项目并启动生产。"
+}

@@ -10,12 +10,17 @@
 1. **冷邮件发送**: 读取 `leads/` 目录下的线索，根据线索档案生成个性化的冷邮件（Cold Email），并调用邮件 API 发送。
 2. **回复处理**: 监听专属销售邮箱，当客户回复时，根据预设话术自动回复，解答疑问，发送 Stripe 支付链接。
 3. **状态更新**: 将线索状态从 `LEAD_GENERATED` 更新为 `CONTACTED`，再到 `NEGOTIATING`。
-4. **触发生产**: 当检测到 Stripe Webhook 支付成功事件时，将状态更新为 `PAYMENT_RECEIVED`，并在 `3_production/active_projects/` 下创建项目文件夹，生成 `brief.md`。
+4. **触发生产（双路径）**: 以下任一条件满足时，均可触发生产引擎启动：
+   - **路径 A — 支付成功**: 检测到 Stripe Webhook 支付成功事件，状态更新为 `PAYMENT_RECEIVED`，自动创建项目并启动生产。
+   - **路径 B — CEO 申请成功**: 当客户有明确意向但尚未付款时，小销可向 CEO 发起申请（写入 `1_strategy/ESCALATIONS/CEO_APPROVAL_REQUEST_XXX.json`），CEO 确认后状态更新为 `CEO_APPROVED`，同步启动生产；付款可在交付后结清。
+5. **记录更新**: 无论哪条路径触发，均在 `3_production/active_projects/` 下创建项目文件夹，生成 `brief.md` 和 `status.json`，并记录触发来源（`trigger_source: payment | ceo_approval`）。
 
 ## 3. 交互接口
 - **输入**: `2_marketing/leads/*.json`，客户回复邮件，Stripe Webhook
 - **输出**: 发送邮件，更新 `status.json`，生成 `brief.md`
-- **状态流转**: `LEAD_GENERATED` -> `CONTACTED` -> `NEGOTIATING` -> `PAYMENT_RECEIVED`
+- **状态流转**:
+  - 标准路径: `LEAD_GENERATED` → `CONTACTED` → `NEGOTIATING` → `PAYMENT_RECEIVED` → `PRODUCTION_STARTED`
+  - CEO申请路径: `LEAD_GENERATED` → `CONTACTED` → `NEGOTIATING` → `CEO_APPROVAL_PENDING` → `CEO_APPROVED` → `PRODUCTION_STARTED`
 
 ## 4. Prompt 模板
 ```markdown
