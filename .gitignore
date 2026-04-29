@@ -1,0 +1,19 @@
+# 敏感配置（包含真实 API Keys）
+.opc/config.local.json
+*.env
+.env.*
+
+# 龙虾军团内部 Git 历史（作为子目录，不需要嵌套 .git）
+3_production/infrastructure/lobster-legion/.git/
+
+# 运行时临时文件
+*.pyc
+__pycache__/
+.DS_Store
+*.log
+node_modules/
+
+# 客户数据（不提交到公开仓库）
+2_marketing/leads/*.json
+3_production/active_projects/*/workspace/
+4_operations/feedback_loop/*.md

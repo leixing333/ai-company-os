@@ -1,0 +1,19 @@
+{
+  "_comment": "每个项目的状态文件。复制此模板到新项目目录，修改 project_id 和 client 字段。",
+  "project_id": "P-YYYYMMDD-XXX",
+  "client_name": "",
+  "client_email": "",
+  "package_tier": "",
+  "budget_usd": 0,
+  "current_status": "PAYMENT_RECEIVED",
+  "status_history": [
+    { "status": "LEAD_GENERATED",   "timestamp": "", "agent": "scout" },
+    { "status": "CONTACTED",        "timestamp": "", "agent": "closer" },
+    { "status": "PAYMENT_RECEIVED", "timestamp": "", "agent": "closer" }
+  ],
+  "current_agent": "cos",
+  "deadline_utc": "",
+  "created_at": "",
+  "updated_at": "",
+  "notes": ""
+}

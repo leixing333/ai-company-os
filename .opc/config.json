@@ -1,0 +1,48 @@
+{
+  "company": {
+    "name": "OPC (One Person Company)",
+    "version": "1.0.0",
+    "description": "多智能体驱动的一人公司操作系统",
+    "ceo": "human"
+  },
+  "paths": {
+    "strategy": "1_strategy/",
+    "marketing": "2_marketing/",
+    "production": "3_production/",
+    "operations": "4_operations/",
+    "lobster_legion": "3_production/infrastructure/lobster-legion/",
+    "active_projects": "3_production/active_projects/",
+    "shared_workspace": "3_production/shared_workspace/",
+    "global_skills": "3_production/global_skills/",
+    "deliverables": "4_operations/deliverables/",
+    "escalations": "1_strategy/ESCALATIONS/"
+  },
+  "apis": {
+    "llm_provider": "anthropic",
+    "llm_model": "claude-3-5-sonnet-20241022",
+    "llm_api_key_env": "ANTHROPIC_API_KEY",
+    "stripe_api_key_env": "STRIPE_API_KEY",
+    "email_api_key_env": "RESEND_API_KEY"
+  },
+  "business": {
+    "currency": "USD",
+    "pricing_tiers": [
+      { "name": "Starter", "price": 999, "description": "单次 AI 设计交付" },
+      { "name": "Growth", "price": 2499, "description": "设计 + 开发全栈交付" },
+      { "name": "Scale", "price": 4999, "description": "完整产品 MVP 交付" }
+    ],
+    "sla_hours": 72,
+    "escalation_threshold_usd": 5000
+  },
+  "escalation_triggers": {
+    "amount_threshold_usd": 5000,
+    "negative_keywords": ["refund", "cancel", "unhappy", "disappointed", "scam", "退款", "取消", "不满意"],
+    "production_timeout_hours": 48,
+    "daily_api_cost_limit_usd": 50
+  },
+  "scheduler": {
+    "scout_cron": "0 8 * * *",
+    "finance_report_cron": "0 9 1 * *",
+    "auto_dream_cron": "0 2 * * 1"
+  }
+}

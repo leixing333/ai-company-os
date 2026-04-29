@@ -1,0 +1,23 @@
+{
+  "_comment": "OPC 全局项目状态机定义。所有项目的 status.json 必须使用此文件中定义的状态码。",
+  "states": {
+    "LEAD_GENERATED":      { "owner": "scout",       "next": ["CONTACTED"],                    "description": "发现潜在客户线索" },
+    "CONTACTED":           { "owner": "closer",      "next": ["NEGOTIATING", "LEAD_GENERATED"], "description": "已发送冷邮件/私信" },
+    "NEGOTIATING":         { "owner": "closer",      "next": ["PAYMENT_RECEIVED", "CONTACTED"], "description": "客户回复，正在沟通需求与报价" },
+    "PAYMENT_RECEIVED":    { "owner": "closer",      "next": ["PRODUCTION_STARTED"],            "description": "客户已付款，需求已确认" },
+    "PRODUCTION_STARTED":  { "owner": "cos",         "next": ["DESIGNING", "DEVELOPING"],       "description": "生产引擎已接单，开始执行" },
+    "DESIGNING":           { "owner": "design_team", "next": ["DEVELOPING", "PRODUCTION_STARTED"], "description": "设计团队正在出图" },
+    "DEVELOPING":          { "owner": "dev_team",    "next": ["TESTING"],                       "description": "开发团队正在编码" },
+    "TESTING":             { "owner": "qa",          "next": ["READY_FOR_DELIVERY", "DEVELOPING"], "description": "QA 正在进行质量验收" },
+    "READY_FOR_DELIVERY":  { "owner": "ops",         "next": ["DELIVERED"],                     "description": "生产完成，交付物已就绪" },
+    "DELIVERED":           { "owner": "csm",         "next": ["COMPLETED", "PRODUCTION_STARTED"], "description": "已发送给客户，等待反馈" },
+    "COMPLETED":           { "owner": "csm",         "next": [],                                "description": "客户确认满意，项目归档" },
+    "ESCALATED":           { "owner": "ceo",         "next": ["PRODUCTION_STARTED", "NEGOTIATING", "COMPLETED"], "description": "遇到异常，等待 CEO 介入" }
+  },
+  "hard_stop_triggers": [
+    { "condition": "amount_usd > 5000",         "action": "ESCALATE", "message": "报价超过 $5,000，需要 CEO 审批" },
+    { "condition": "negative_keyword_detected", "action": "ESCALATE", "message": "检测到负面关键词，需要 CEO 介入" },
+    { "condition": "production_timeout_48h",    "action": "ESCALATE", "message": "生产超时 48 小时，需要 CEO 检查" },
+    { "condition": "daily_api_cost > 50",       "action": "ESCALATE", "message": "当日 API 成本超过 $50，需要 CEO 确认" }
+  ]
+}
