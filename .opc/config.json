@@ -15,7 +15,16 @@
     "shared_workspace": "3_production/shared_workspace/",
     "global_skills": "3_production/global_skills/",
     "deliverables": "4_operations/deliverables/",
-    "escalations": "1_strategy/ESCALATIONS/"
+    "escalations": "1_strategy/ESCALATIONS/",
+    "kairos_logs": "3_production/infrastructure/lobster-legion/memory/kairos_logs/",
+    "finance_tracker": "1_strategy/finance_tracker.csv",
+    "souls": [
+      "1_company/agents/",
+      "2_strategy/agents/",
+      "2_marketing/agents/",
+      "3_production/infrastructure/lobster-legion/agents/",
+      "4_operations/agents/"
+    ]
   },
   "apis": {
     "llm_provider": "anthropic",
@@ -39,6 +48,13 @@
     "negative_keywords": ["refund", "cancel", "unhappy", "disappointed", "scam", "退款", "取消", "不满意"],
     "production_timeout_hours": 48,
     "daily_api_cost_limit_usd": 50
+  },
+  "ui": {
+    "theme": "deep-space-dark",
+    "refresh_interval_seconds": 10,
+    "galaxy_view_center_agent": "cos",
+    "command_palette_shortcut": "cmd+k",
+    "finance_chart_default_range_days": 30
   },
   "scheduler": {
     "scout_cron": "0 8 * * *",

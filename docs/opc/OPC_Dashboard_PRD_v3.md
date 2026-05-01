@@ -1,4 +1,4 @@
-# OPC 可视化管理工作台 PRD v3
+# OPC 可视化管理工作台 PRD v3 (完整版)
 
 ## 1. 产品概述
 
@@ -14,7 +14,7 @@ OPC (One Person Company) 可视化管理工作台是专为“一人公司”CEO 
 
 ## 2. 需求架构与页面规划
 
-工作台采用“深空黑 (Deep Space Black)”主题，极简设计，高信息密度。整体架构分为四大核心模块。
+工作台采用“深空黑 (Deep Space Black)”主题，极简设计，高信息密度。整体架构分为五大核心模块。
 
 ### 2.1 首页：全局指挥大盘 (Mission Control Center)
 这是 CEO 登录后的默认视图，提供系统运行的全局脉搏。
@@ -50,6 +50,15 @@ OPC (One Person Company) 可视化管理工作台是专为“一人公司”CEO 
 | **交付物橱窗 (Deliverables Showcase)** | 采用瀑布流布局展示已完成项目成果，支持一键打包下载。 | 读取 `4_operations/deliverables/` |
 | **配置中心** | 提供可视化界面编辑全局配置，管理 API Key 和系统参数。 | 读写 `.opc/config.json` |
 
+### 2.5 财务与运营大盘 (Finance & Ops Dashboard)
+展示公司的核心商业指标，验证“一人公司”的商业闭环。
+
+| 模块名称 | 创新展示方式 | 数据来源与逻辑 |
+|---|---|---|
+| **营收看板 (Revenue Board)** | 展示总收入、MRR（月经常性收入）、各定价层级（Starter/Growth/Scale）的销售占比。 | 读取 `1_strategy/finance_tracker.csv` 或对接 Stripe API |
+| **成本与利润 (Cost & Margin)** | 展示 LLM API 的消耗成本，计算单项目利润率，实现成本监控。 | 结合 API 调用日志与项目收入计算 |
+| **转化漏斗 (Conversion Funnel)** | 基于线索数据和成交数据，展示从线索获取（Scout）到最终交付（CSM）的转化漏斗。 | 读取 `leads/` 目录与 `status.json` 历史 |
+
 ## 3. 创新交互设计
 
 ### 3.1 ⌘K 全局命令面板 (Omni-Command Palette)
@@ -63,10 +72,23 @@ CEO 可以通过输入 `go to scout` 实现**快速跳转**，直接打开小探
 通过**上下文拖拽**功能，CEO 可将左侧边栏的 `brief.md` 或 `status.json` 拖拽到对话窗口，系统自动将其作为上下文挂载。
 系统支持**并行工作区**，允许打开多个标签页，CEO 可同时指导设计团队（Space A）和监控营销团队（Space B）。
 
-### 3.3 终端融合 (Terminal Fusion)
+### 3.3 实时对话与干预 (Intervention Center)
+提供一个纯净的对话界面，直接对接 LLM API，用于 CEO 与 Agent 的交互。
+系统支持 Agent 专属对话，通过 `@AgentName` 的方式，将特定的 `SOUL.md` 作为 System Prompt 注入，与指定 Agent 进行对话。
+在项目出现异常（`ESCALATED`）时，CEO 可以通过对话下达指令，或直接修改状态文件以恢复流程，实现人工接管。
+
+### 3.4 终端融合 (Terminal Fusion)
 工作台底部保留了一个可随时唤出的终端抽屉（基于 xterm.js）。图形界面的操作会在终端中回显底层命令，实现 GUI 与 CLI 的无缝切换，满足高级操作需求。
 
-## 4. 系统文件前置更新清单
+## 4. 技术架构方案
+
+为了坚持“自己开发”和“不引入新工具”的原则，技术栈选择如下：
+
+前端框架采用 Next.js (React) 配合 TypeScript，样式使用 Tailwind CSS。组件库选择 shadcn/ui，以提供极简、专业的极客风格，且代码完全在本地。终端组件使用 xterm.js。
+后端框架采用 FastAPI (Python)，其主要职责是提供 RESTful API 读取/写入本地文件系统（`.md`, `.json`, `.csv`），执行 Python 引擎脚本，代理 LLM API 请求。
+在数据存储方面，系统完全依赖现有的文件系统（Markdown, JSON, CSV），不引入任何关系型或非关系型数据库。
+
+## 5. 系统文件前置更新清单
 
 为了支持上述可视化需求，现有的底层文件系统需要进行以下前置更新和规范化：
 
@@ -78,8 +100,9 @@ CEO 可以通过输入 `go to scout` 实现**快速跳转**，直接打开小探
 | `kairos_logs/` | 分散在不同目录 | 需要统一日志格式（JSON Lines），确保包含 `timestamp`, `agent`, `action_type` (DECISION/STATUS/ESCALATION), `details` 字段。 |
 | `status.json` | 存在模板 | 确保所有活跃项目严格遵循 `STATUS_MACHINE.json` 中定义的状态码，禁止使用未定义状态。 |
 | `.opc/config.json` | 已存在 | 补充前端 UI 所需的配置项（如主题色偏好、刷新频率）。 |
+| `finance_tracker.csv` | 文件缺失 | 需要在 `1_strategy/` 目录下创建该文件，用于记录财务数据。 |
 
-## 5. 分层级开发计划
+## 6. 分层级开发计划
 
 开发工作将分为四个阶段（Phases），逐步实现从只读展示到深度交互的完整闭环。
 
@@ -98,7 +121,7 @@ CEO 可以通过输入 `go to scout` 实现**快速跳转**，直接打开小探
 后端需要实现状态修改 API，例如审批 Escalation 和更新 `status.json`。此外，集成 LLM API，用于解析自然语言命令。
 前端将开发 ⌘K 全局命令面板组件，实现硬停警报（Aegis Gates）抽屉及一键审批功能，并集成底部终端抽屉（xterm.js）。
 
-### Phase 4: 空间隔离与资产管理 (Week 4)
-本阶段的目标是实现高级的上下文管理和数字资产展示，完成系统闭环。
-后端需要实现文件打包下载 API，并完善配置文件读写 API。
-前端将开发“空间 (Space)”多标签页系统，实现拖拽式上下文挂载功能。同时，开发“技能矩阵”和“交付物橱窗”视图，并进行全链路 UI/UX 一致性打磨和性能优化。
+### Phase 4: 空间隔离、对话与财务 (Week 4)
+本阶段的目标是实现高级的上下文管理、实时对话和财务大盘展示，完成系统闭环。
+后端需要实现文件打包下载 API，完善配置文件读写 API，并提供财务数据读取接口。
+前端将开发“空间 (Space)”多标签页系统，实现拖拽式上下文挂载功能和实时对话界面。同时，开发“技能矩阵”、“交付物橱窗”和“财务与运营大盘”视图，并进行全链路 UI/UX 一致性打磨和性能优化。
